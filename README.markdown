@@ -47,7 +47,11 @@ LinkedIn's API uses Oauth for authentication. Luckily, the LinkedIn gem hides mo
     # get a profile for someone via their public profile url
     client.profile(:url => 'http://www.linkedin.com/in/netherland')
 
-
+### Group examples
+    # get the groups for the authenticated user
+    client.group_memberships
+    # Post a discussion to a particular group with id 1234
+    client.group_add_share(1234, title: 'New Group Discussion', summary: 'test summary', content: {'submitted-url' => 'http://developer.linkedin.com</submitted-url', 'title' => 'test title', 'description' => 'test description'})
 
 More examples in the [examples folder](http://github.com/pengwynn/linkedin/blob/master/examples).
 
