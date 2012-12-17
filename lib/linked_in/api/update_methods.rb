@@ -18,7 +18,7 @@ module LinkedIn
       # https://developer.linkedin.com/documents/groups-api#post
       def group_add_share(group_id, share)
         path = "/groups/#{group_id}/posts"
-        defaults = {:visibility => {:code => "anyone"}}
+        defaults = {}
         post(path, defaults.merge(share).to_json, "Content-Type" => "application/json")
       end
 
