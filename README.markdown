@@ -58,6 +58,12 @@ LinkedIn's API uses Oauth for authentication. Luckily, the LinkedIn gem hides mo
     # get the groups for the authenticated user
     client.group_memberships
 
+    # get the details of a group with id 1234
+    client.group_details(1234, :fields => ['id', 'name', 'large-logo-url'])
+    # available fields:
+    # id,name,short-description,description,relation-to-viewer:(membership-state,available-actions),posts,counts-by-category,is-open-to-non-members,category,website-url,locale,location:(country,postal-code),allow-member-invites,site-group-url,small-logo-url,large-logo-url
+    # See more at https://developer.linkedin.com/documents/groups-api
+
     # Post a discussion to a particular group with id 1234
     client.group_add_share(1234, title: 'New Group Discussion', summary: 'test summary', content: {'submitted-url' => 'http://developer.linkedin.com</submitted-url', 'title' => 'test title', 'description' => 'test description'})
 
