@@ -8,7 +8,8 @@ module LinkedIn
         :access_token_path  => "/uas/oauth/accessToken",
         :authorize_path     => "/uas/oauth/authorize",
         :api_host           => "https://api.linkedin.com",
-        :auth_host          => "https://www.linkedin.com"
+        :auth_host          => "https://www.linkedin.com",
+        :authenticate_path  => "/uas/oauth/authenticate"
       }
 
       def consumer
@@ -36,6 +37,12 @@ module LinkedIn
 
       def authorize_from_access(atoken, asecret)
         @auth_token, @auth_secret = atoken, asecret
+      end
+
+      def authenticate_from_request(request_token, request_secret, verifier_or_pin)
+        request_token = ::OAuth::RequestToken.new(consumer, request_token, request_secret)
+        access_token  = request_token.get_access_token(:oauth_verifier => verifier_or_pin)
+        @auth_token, @auth_secret = access_token.token, access_token.secret
       end
 
       private

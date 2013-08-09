@@ -22,6 +22,13 @@ module LinkedIn
         post(path, defaults.merge(share).to_json, "Content-Type" => "application/json")
       end
 
+      # https://developer.linkedin.com/creating-company-shares
+      def company_add_share(company_id, share)
+        path = "/companies/#{company_id}/shares"
+        defaults = {:visibility => {:code => "anyone"}}
+        post(path, defaults.merge(share).to_json, "Content-Type" => "application/json")
+      end
+
       # def share(options={})
       #   path = "/people/~/shares"
       #   defaults = { :visability => 'anyone' }
@@ -63,6 +70,10 @@ module LinkedIn
             }
         }
         post(path, message.to_json, "Content-Type" => "application/json")
+      end
+
+      def authenticate
+        path = ''
       end
       #
       # def clear_status

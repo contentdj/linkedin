@@ -32,6 +32,17 @@ module LinkedIn
         path = group_path(group_id, options)
         simple_query(path, options)
       end
+
+      def companies(options = {})
+        path = "/companies?is-company-admin=true"
+        simple_query(path, options)
+      end
+
+      # https://developer.linkedin.com/documents/company-lookup-api-and-fields
+      def company_details(company_id, options={})
+        path = "/companies/#{company_id}"
+        simple_query(path, options)
+      end
       
       def shares(options={})
         path = "#{person_path(options)}/network/updates?type=SHAR&scope=self"
