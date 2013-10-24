@@ -6,7 +6,7 @@ module LinkedIn
       def add_share(share)
         path = "/people/~/shares"
         defaults = {:visibility => {:code => "anyone"}}
-        post(path, defaults.merge(share).to_json, "Content-Type" => "application/json")
+        Mash.from_json( post(path, defaults.merge(share).to_json, "Content-Type" => "application/json") )
       end
 
       def join_group(group_id)
@@ -26,7 +26,7 @@ module LinkedIn
       def company_add_share(company_id, share)
         path = "/companies/#{company_id}/shares"
         defaults = {:visibility => {:code => "anyone"}}
-        post(path, defaults.merge(share).to_json, "Content-Type" => "application/json")
+        Mash.from_json( post(path, defaults.merge(share).to_json, "Content-Type" => "application/json") )
       end
 
       # def share(options={})

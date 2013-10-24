@@ -33,6 +33,11 @@ module LinkedIn
         simple_query(path, options)
       end
 
+      def group_shares(group_id, options={})
+        path = "#{group_path(group_id)}/posts"
+        simple_query(path, options)
+      end
+
       def companies(options = {})
         path = "/companies?is-company-admin=true"
         simple_query(path, options)
@@ -88,7 +93,7 @@ module LinkedIn
           end
         end
 
-        def group_path(group_id, options)
+        def group_path(group_id, options={})
           path = "/groups/#{group_id}"
         end
 
